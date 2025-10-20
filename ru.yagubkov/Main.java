@@ -245,37 +245,40 @@ public class Main {
     }
 
     public static void task5() {
-        System.out.println("Оружие");
-
-        GunNew gun = new GunNew(10);
-        gun.load(5);
-
-        System.out.println("Выстрелы из GunNew:");
-        for (int i = 0; i < 3; i++) {
+        System.out.println("Введите макс патронов");
+        int bullets = scanner.nextInt();
+        GunNew gun = new GunNew(bullets);
+        System.out.println("Введите сколько зарядить");
+        bullets = scanner.nextInt();
+        gun.load(bullets);
+        System.out.println("Введите сколько выстрелить");
+        int shoots = scanner.nextInt();
+        System.out.println("Стрельба ");
+        for (int i = 0; i <= shoots; i++) {
             gun.shoot();
         }
-
         gun.howManyBullets();
         gun.isLoaded();
-
         System.out.println("Разряжаем:");
         gun.unload();
         gun.isLoaded();
     }
 
     public static void task6() {
-        System.out.println("Лучший стрелок");
-
-        Shooter unarmed = new Shooter("Безоружный");
-        Shooter withPistol = new Shooter("Пистолетчик", new GunNew(8));
-        ((GunNew) withPistol.getWeapon()).load(5);
-
-
+        System.out.println("Задайте имя стрелку");
+        String name = scanner.nextLine();
+        Shooter unarmed = new Shooter(name);
+        System.out.println("Задайте имя 2 стрелку");
+        name = scanner.nextLine();
+        System.out.println("Задайте макс патроны");
+        int bullets = scanner.nextInt();
+        Shooter withPistol = new Shooter(name, new GunNew(bullets));
+        System.out.println("Сколько зарядить");
+        bullets = scanner.nextInt();
+        ((GunNew) withPistol.getWeapon()).load(bullets);
         System.out.println("Выстрелы стрелков:");
         unarmed.shoot();
         withPistol.shoot();
-
-
         System.out.println("Информация о стрелках:");
         unarmed.displayInfo();
         withPistol.displayInfo();
